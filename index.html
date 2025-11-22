@@ -6,12 +6,12 @@
   <title>Barbearia SAS Style</title>
 
   <style>
+    /* (todo seu CSS, inalterado) */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Poppins', Arial, sans-serif;
       background: url('fundo.jpg') no-repeat center center fixed;
@@ -23,7 +23,6 @@
       min-height: 100vh;
       animation: fadebg 1.8s ease-out;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -32,7 +31,6 @@
       background: rgba(0, 0, 0, 0.8);
       z-index: -1;
     }
-
     header {
       text-align: center;
       padding: 2rem 1rem;
@@ -40,7 +38,6 @@
       transform: translateY(20px);
       animation: fadeIn 1.2s ease forwards;
     }
-
     h1 {
       font-size: 2.8rem;
       color: #00E0FF;
@@ -52,7 +49,6 @@
       display: inline-block;
       overflow: hidden;
     }
-
     h1::after {
       content: "";
       position: absolute;
@@ -63,13 +59,11 @@
       background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
       animation: brilho 3s infinite;
     }
-
     header p {
       font-size: 1.1rem;
       color: #ccc;
       margin-top: 0.3rem;
     }
-
     section {
       width: 90%;
       max-width: 700px;
@@ -80,7 +74,6 @@
       margin: 1rem 0;
       border-left: 4px solid #00E0FF;
     }
-
     h2 {
       text-align: center;
       color: #00E0FF;
@@ -88,36 +81,30 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       color: #eee;
     }
-
     th, td {
       padding: 0.8rem;
       border-bottom: 1px solid #444;
       text-align: left;
     }
-
     th {
       color: #00E0FF;
       font-weight: 600;
       background-color: rgba(0, 224, 255, 0.05);
     }
-
     #galeria {
       text-align: center;
     }
-
     .fotos {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     .fotos img {
       width: 30%;
       min-width: 150px;
@@ -128,16 +115,13 @@
       border: 2px solid #00E0FF33;
       transition: 0.3s;
     }
-
     .fotos img:nth-child(2) { animation-delay: 0.2s; }
     .fotos img:nth-child(3) { animation-delay: 0.4s; }
-
     .fotos img:hover {
       transform: scale(1.05);
       border-color: #00E0FF;
       box-shadow: 0 0 10px #00E0FF66;
     }
-
     form {
       display: flex;
       flex-direction: column;
@@ -146,26 +130,22 @@
       transform: translateY(20px);
       animation: fadeIn 1s ease 0.8s forwards;
     }
-
     input, select, button {
       padding: 0.8rem;
       border: none;
       border-radius: 6px;
       font-size: 1rem;
     }
-
     input, select {
       background-color: #111;
       color: #fff;
       border: 1px solid #333;
       transition: 0.3s;
     }
-
     input:focus, select:focus {
       border-color: #00E0FF;
       outline: none;
     }
-
     button {
       background: linear-gradient(90deg, #00E0FF, #00AACC);
       color: #111;
@@ -176,12 +156,10 @@
       transition: transform 0.2s, box-shadow 0.2s;
       animation: pulse 2.8s infinite;
     }
-
     button:hover {
       transform: scale(1.05);
       box-shadow: 0 0 10px #00E0FF80;
     }
-
     .mensagem-confirmacao {
       display: none;
       margin-top: 1rem;
@@ -192,7 +170,6 @@
       border-radius: 6px;
       text-align: center;
     }
-
     #avaliacoes {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
@@ -203,20 +180,17 @@
       transform: translateY(20px);
       animation: fadeIn 1.2s ease 1s forwards;
     }
-
     blockquote {
       font-style: italic;
       color: #ddd;
       margin: 0.5rem 0;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       color: #777;
     }
-
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -231,9 +205,7 @@
       transition: transform 0.2s;
       z-index: 100;
     }
-
     .whatsapp:hover { transform: scale(1.1); }
-
     @keyframes fadebg { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
@@ -246,22 +218,18 @@
       0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,224,255,0); }
       50% { transform: scale(1.03); box-shadow: 0 0 12px rgba(0,224,255,0.5); }
     }
-
     .reveal {
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
     }
-
     .reveal.ativo {
       opacity: 1;
       transform: translateY(0);
     }
-
     @media (max-width: 768px) {
       .fotos img { width: 45%; }
     }
-
     @media (max-width: 480px) {
       .fotos img { width: 90%; }
     }
@@ -297,22 +265,18 @@
     <h2>Agende seu Horário</h2>
     <form id="formAgendamento">
       <input type="text" id="nome" placeholder="Nome do cliente" required>
-
-      <!-- NOVO CAMPO: BARBEIRO -->
       <select id="barbeiro" required>
         <option value="">Selecione o barbeiro</option>
         <option value="Lucas">Lucas</option>
         <option value="Marcos">Marcos</option>
         <option value="João">João</option>
       </select>
-
       <select id="servico" required>
         <option value="">Selecione o serviço</option>
         <option value="Corte Social">Corte Social</option>
         <option value="Degradê">Degradê</option>
         <option value="Corte e Barba">Corte e Barba</option>
       </select>
-
       <input type="date" id="data" required>
       <select id="hora" required>
         <option value="">Selecione o horário</option>
@@ -351,8 +315,38 @@
     const form = document.getElementById('formAgendamento');
     const msg = document.getElementById('mensagemConfirmacao');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const email = document.getElementById('email').value;
+      const barbeiro = document.getElementById('barbeiro').value;
+      const servico = document.getElementById('servico').value;
+      const data = document.getElementById('data').value;
+      const hora = document.getElementById('hora').value;
+
+      const { data: resultado, error } = await supabase
+        .from('agendamentos')
+        .insert([
+          {
+            nome,
+            telefone,
+            email,
+            barbeiro,
+            servico,
+            data,
+            hora,
+            status: 'Pendente'
+          }
+        ]);
+
+      if (error) {
+        alert('⚠️ Erro ao agendar! Tente novamente.');
+        console.error(error);
+        return;
+      }
+
       msg.style.display = 'block';
       form.reset();
       window.scrollTo({ top: msg.offsetTop, behavior: 'smooth' });
@@ -370,9 +364,9 @@
     window.addEventListener('scroll', revelarAoRolar);
     revelarAoRolar();
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
-<script src="./supabase.js"></script>
+  <script src="./supabase.js"></script>
 
 </body>
 </html>
-
