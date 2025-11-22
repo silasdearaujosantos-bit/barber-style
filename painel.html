@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Barbeiro</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 20px;
+    }
+    h2 {
+      color: #00E0FF;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    button {
+      padding: 6px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .confirmar {
+      background: #00e05a;
+      color: #000;
+    }
+    .cancelar {
+      background: #ff4444;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Painel do Barbeiro</h2>
+
+  <label>Selecione o Barbeiro:</label>
+  <select id="selectBarbeiro">
+    <option value="Lucas">Lucas</option>
+    <option value="Marcos">Marcos</option>
+    <option value="João">João</option>
+  </select>
+
+  <table id="tabelaAgendamentos">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Serviço</th>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <script src="./supabase.js"></script>
+
+  <script>
+    const tabela = document.querySelector('#tabelaAgendamentos tbody');
+    const selectBarbeiro = document.getElementById('selectBarbeiro');
+
+    async function carregarAgendamentos() {
+      tabela.innerHTML = "";
+
+      const barbeiro = selectBarbeiro.value;
+
+      const { data, error } = await supabase
+        .from('agendamentos')
+        .select('*')
+        .eq('barbeiro', barbeiro)
+        .order('data', { ascending: true });
+
+      if (error) {
+        console.log("Erro:", error);
+        return;
+      }
+
+      data.forEach(item => {
+        tabela.innerHTML += `
+          <tr>
+            <td>${item.nome}</td>
+            <td>${item.servico}</td>
+            <td>${item.data}</td>
+            <td>${item.hora}</td>
+            <td>${item.status}</td>
+            <td>
+              <button class="confirmar" onclick="atualizarStatus(${item.id}, 'Confirmado')">Confirmar</button>
+              <button class="cancelar" onclick="atualizarStatus(${item.id}, 'Cancelado')">Cancelar</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    async function atualizarStatus(id, novoStatus) {
+      await supabase
+        .from('agendamentos')
+        .update({ status: novoStatus })
+        .eq('id', id);
+
+      carregarAgendamentos();
+    }
+
+    selectBarbeiro.addEventListener('change', carregarAgendamentos);
+    carregarAgendamentos();
+  </script>
+
+</body>
+</html>
